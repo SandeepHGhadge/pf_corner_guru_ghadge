@@ -75,7 +75,6 @@ export function Footer({ content }) {
           <a href={site.facebook} rel="noopener" target="_blank">Facebook</a>{' · '}
           <a href={site.instagram} rel="noopener" target="_blank">Instagram</a>{' · '}
           <a href={'https://wa.me/' + site.whatsapp} rel="noopener" target="_blank">WhatsApp</a><br />
-          <a href="#/admin">Admin</a>
         </p>
       </div>
     </footer>
