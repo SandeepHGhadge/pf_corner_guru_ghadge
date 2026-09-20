@@ -4,8 +4,8 @@ Two files do the work:
 
 | File | What it is | Where it goes |
 |---|---|---|
-| `PF_Corner_website_multi_lang.html` | The whole website and the admin panel | Any static host: Hostinger, Netlify, Vercel, GitHub Pages, cPanel |
-| `server.js` (+ `package.json`, `.env`) | The small helper that actually sends email, WhatsApp and SMS | Render, Railway, Fly.io, a VPS, or the same cPanel if it runs Node |
+| the built `dist/` folder | The whole website and the admin panel | Any static host: Hostinger, Netlify, Vercel, GitHub Pages, cPanel |
+| `server/` (`server.js`, `package.json`, `.env`) | The small helper that actually sends email, WhatsApp and SMS | Render, Railway, Fly.io, a VPS, or the same cPanel if it runs Node |
 
 The website works on its own. Every enquiry is saved and shown in the admin panel, and WhatsApp opens pre-filled. **Email needs the helper server** — a browser cannot log in to Gmail by itself, so nothing on the internet can send real email from a plain HTML file.
 
@@ -13,7 +13,12 @@ The website works on its own. Every enquiry is saved and shown in the admin pane
 
 ## 1. Put the website online
 
-Upload `PF_Corner_website_multi_lang.html` and rename it `index.html`. That is all. Open it and the site works.
+```bash
+npm install
+npm run build
+```
+
+Upload everything inside `dist/` to your host. That is all — open it and the site works.
 
 The admin panel is at `yoursite.com/#/admin`.
 First sign in: **admin / admin@123** — change it immediately under *Account & security*.
@@ -33,7 +38,7 @@ Gmail's free limit is roughly 500 emails a day, which is far more than a consult
 ## 3. Run the helper server
 
 ```bash
-# put server.js, package.json and .env in one folder
+cd server
 cp .env.example .env      # then edit .env
 npm install
 npm start
@@ -51,7 +56,7 @@ ADMIN_EMAIL=pfcorner100@gmail.com
 
 ### Free hosting on Render
 
-1. Push the folder to a GitHub repository.
+1. Push the `server` folder to a GitHub repository.
 2. render.com → **New → Web Service** → pick the repo.
 3. Build command `npm install`, start command `npm start`.
 4. Add each line of `.env` under **Environment → Environment Variables**.
