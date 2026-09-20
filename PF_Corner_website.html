@@ -587,7 +587,7 @@ function chrome() {
     '<p><a href="' + esc(s.facebook) + '" rel="noopener" target="_blank">Facebook</a> · ' +
       '<a href="' + esc(s.instagram) + '" rel="noopener" target="_blank">Instagram</a> · ' +
       '<a href="https://wa.me/' + esc(s.whatsapp) + '" rel="noopener" target="_blank">WhatsApp</a>' +
-      '<br><a href="#/admin">Admin</a></p>';
+      '</p>';
 
   let w = $('.wa');
   if (!w) { w = document.createElement('a'); w.className = 'wa'; w.target = '_blank'; w.rel = 'noopener'; document.body.append(w); }
